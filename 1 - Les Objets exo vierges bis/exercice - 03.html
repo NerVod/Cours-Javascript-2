@@ -27,6 +27,7 @@
         - qui affiche ce texte dans une boîte de dialogue.
         - qui RETOURNE ce texte concaténé avec la chaîne de caractère 'hello !'.
       -> Exécutez cette méthode et AFFICHEZ la VALEUR DE RETOUR dans une boîte de dialogue.
+      
 
       -> 1 propriété qui contient une méthode :
         - qui prend en argument un tableau de 3 index.
@@ -41,6 +42,60 @@
         - qui RETOURNE 1 objet de 5 propriétés.
       -> Exécutez cette méthode et AFFICHEZ la valeur de la 4ème propriété de la VALEUR DE RETOUR dans une boîte de dialogue.
       */
+
+
+
+
+
+      var grosObjet = {
+        parCent: function(nombre) {
+          alert(nombre);
+          var nombre = nombre*100;
+          alert(nombre);
+        },
+
+        bonjour: function(nom) {
+          alert(nom);
+          var nom = (nom + ' hello !')
+          alert(nom);
+        },
+
+        tableau: function(tableau3Valeurs){
+          alert(tableau3Valeurs[1]);
+          tableau3Valeurs[1] = tableau3Valeurs[2];
+          var tableauModif= tableau3Valeurs
+          alert(tableauModif[1])
+        },
+
+        cinqProprietes: function(objetCinqProp) {
+          // var objetCinqProp = {
+          //   un: 10,
+          //   deux:20,
+          //   trois:30,
+          //   quatre:40,
+          //   cinq:50,
+          // }
+          objetCinqProp.quatre = (objetCinqProp.un + objetCinqProp.deux + objetCinqProp.trois + objetCinqProp.quatre + objetCinqProp.cinq)
+          alert(objetCinqProp.quatre);
+        },
+
+
+        
+      };
+      
+      grosObjet.parCent(5);
+      grosObjet.bonjour('Diego');
+      grosObjet.tableau(['un','deux','trois']);
+      grosObjet.cinqProprietes({
+            un: 10,
+            deux:20,
+            trois:30,
+            quatre:40,
+            cinq:50,
+          })
+
+
+
     </script>
   </head>
   <body>

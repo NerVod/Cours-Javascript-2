@@ -14,19 +14,46 @@
         - La matière est une chaîne de caractère. Elle est fixée au départ.
         - La durée de garantie est une chaîne de caractère. Elle est fixée au départ.
       */
+     var NouveauRobot = function(SerialNumber, couleur) {
+       this.numeroDeSerie = SerialNumber,
+       this.modele = 6,
+       this.nomUsage,
+       this.couleur = couleur,
+       this.matiere = 'Aluminium',
+       this.dureeGarantie = '1 an apres date d\'achat';
+    }
       
       /*
         2. Créez 12 robots à l'aide de cette fonction constructeur. Chaque robot aura donc un numéro de série et une couleur différente.
       */
-      
+     var robot1 = new NouveauRobot(1, 'bleu');
+     var robot2 = new NouveauRobot(2, 'orange');
+     var robot3 = new NouveauRobot(3, 'rouge');
+     var robot4 = new NouveauRobot(4, 'vert');
+     var robot5 = new NouveauRobot(5, 'jaune');
+     var robot6 = new NouveauRobot(6, 'marron');
+     var robot7 = new NouveauRobot(7, 'violet');
+     var robot8 = new NouveauRobot(8, 'parme');
+     var robot9 = new NouveauRobot(9, 'écarlate');
+     var robot10 = new NouveauRobot(10, 'rose');
+     var robot11 = new NouveauRobot(11, 'Bleu-marine');
+     var robot12 = new NouveauRobot(12, 'blanc');
       /*
         3. Créez un tableau qui sera le magasin. Ce tableau devra contenir les 12 références vers les 12 objets représentant chacun des 12 robots.
       */
+     var magasin = [robot1, robot2, robot3, robot4, robot5, robot6, robot7, robot8, robot9, robot10, robot11, robot12];
       
       /*
         4. Réalisez l'algorithme suivant :
         POUR CHAQUE robot dans le magasin, AFFECTEZ un nom d'usage qui sera la concaténation du modèle, du numéro de série et de l'index du robot dans le magasin.
       */
+    var affecterNomUsage = function() {
+      for (var i = 0 ; i < magasin.length ; i++) {
+        magasin[i].nomUsage = magasin[i].modele + magasin[i].numeroDeSerie + [i];
+      }
+    };
+    
+
     </script>
   </head>
   <body>

@@ -16,7 +16,21 @@
         - Le nombre de bonjour est un nombre (de base on le fixera à 0)
         - Dire bonjour est une fonction.
       */
-      
+
+      var robot = {
+        numeroSerie : 1,
+        numeroModele : 299,
+        nomUsage : 'CyborgVanDamme',
+        couleur : 'bleu-vert',
+        matiere: 'aluminium',
+        dureeDeGarantie : '1 an après l\'achat',
+        NombreBonjour: 0,
+        direBonjour: function(){
+          alert("Bonjour");
+        }
+      }
+
+
       
       /*
         2. Exécutez la méthode qui permet au robot de dire bonjour. Elle doit entraîner l'affichage d'une boite de dialogue avec le texte 'Bonjour humain !' écrit dedans.

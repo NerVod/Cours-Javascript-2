@@ -18,15 +18,15 @@
       */
 
       var robot = {
-        numeroSerie : 1,
+        numeroSerie : 137,
         numeroModele : 299,
         nomUsage : 'CyborgVanDamme',
         couleur : 'bleu-vert',
         matiere: 'aluminium',
         dureeDeGarantie : '1 an après l\'achat',
-        NombreBonjour: 0,
-        direBonjour: function(){
-          alert("Bonjour");
+        nombreBonjour: 0,
+        direBonjour: function(texte){
+          alert(texte);
         }
       }
 
@@ -35,22 +35,37 @@
       /*
         2. Exécutez la méthode qui permet au robot de dire bonjour. Elle doit entraîner l'affichage d'une boite de dialogue avec le texte 'Bonjour humain !' écrit dedans.
       */
+     robot.direBonjour('Bonjour Humain !');
 
       /*
         4. Modifiez la méthode dire bonjour pour que le robot incrémente le nombre de bonjour de 1 à chaque fois qu'on exécute la méthode dire bonjour. Vous pouvez utiliser le mot clé this pour accéder à la propriété nombre de bonjour lorsque vous programmez dans la méthode.
       */
-      
+      robot.direBonjour = function(texteBonjour){
+          alert(texteBonjour);
+          this.nombreBonjour++; 
+      };
+
       /*
         5. Exécutez 3 fois de suite la méthode dire bonjour et vérifiez dans l'onglet DOM de Firebug (ou d'un autre debugger) que la propriété nombre de bonjour de votre robot à bien été modifiée en conséquence.
       */ 
+     robot.direBonjour('Salut !');
+     robot.direBonjour('Comment ça va ?');
+     robot.direBonjour('Ca va bien ?');
+
       
       /*
         6. Modifiez la méthode dire bonjour pour que le robot affiche une boite de dialogue avec le texte 'Bonjour humain ! Je m\'appelle X' ou X est un mot constitué de la concaténation du modèle et du numéro de série du robot. Vous devez utiliser le mot clé this pour accéder à ses propriétés lorsque vous programmez dans la méthode.
       */
+     robot.direBonjour = function() {
+       alert('Bonjour humain ! je m\'apelle '+ this.numeroModele + this.numeroSerie +' !')
+       this.nombreBonjour++;
+     }
       
       /*
         7. Exécutez la méthode dire bonjour.
       */
+     robot.direBonjour();
+
     </script>
   </head>
   <body>

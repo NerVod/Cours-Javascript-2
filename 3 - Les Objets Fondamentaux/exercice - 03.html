@@ -12,10 +12,32 @@
       /*
         1. Créez un tableau contenant 10 mots qui forment une phrase. Utilisez la méthode .join() des tableaux pour afficher l'ensemble des éléments du tableau sous la forme d'une chaîne de caractères. 
       */
+     var laPhrase = ['Une','phrase','avec','suffisament','de','mots','dedans','pour','faire','dix'];
+     alert(laPhrase.join());
+
       
       /*
         2. Utilisez la méthode .push() pour ajouter 3 mots à la fin du tableau et la méthode .shift() pour retirer les 3 premiers mots du tableau. Sauvegarder au fur et à mesure les 3 premiers mots extrait dans un autre tableau à l'aide la méthode .push().
       */
+
+      laPhrase.push('encore','trois','mots');
+      alert(laPhrase);
+
+      var motsCoupes = [];
+      enleverMots = function(){
+          for( var i = 0; i < 3 ; i++ ){
+            motsCoupes[i] = laPhrase.shift();
+          }
+          return {
+            motsCoupes,
+            laPhrase
+        };
+      };
+      enleverMots();
+      
+      alert(motsCoupes.join());
+      alert(laPhrase.join());
+
     </script>
   </head>
   <body>

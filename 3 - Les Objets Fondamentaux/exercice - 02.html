@@ -6,7 +6,7 @@
     <script>
       //Énoncé :
       /*
-        En JavaScript, un mécanisme de coercition transforme les types primitifs en objets en cas de besoin. Le moteur JavaScript peut transforme :
+        En JavaScript, un mécanisme de coercition transforme les types primitifs en objets en cas de besoin. Le moteur JavaScript peut transformer :
         - Un nombre en objet de type Number;
         - Un booléen en objet de type Boolean
         - Une chaîne de caractère en objet de type String.
@@ -17,14 +17,45 @@
       /*
       1. Obligez l'utilisateur à saisir une chaîne de caractères dans une boite de dialogue. Un fois la saisie validée. Affichez dans une boite de dialogue le nombre de caractères de la chaîne de caractères saisie (propriété .length). 
       */
+     const saisieTexte = function() {
+       var leTexte = false;
+       while(leTexte == null || leTexte == false ){
+         leTexte = prompt('Veuillez saisir un message');
+       }
+       alert(leTexte.length);
+     }
+     saisieTexte();
       
       /*
       2. Utilisez la méthode .substr() pour extraire et afficher dans une boite de dialogue tous les caractères de la chaîne saisie à l'exception du premier et du dernier.
       */
+
+      const saisieTexte2 = function() {
+        var leTexte2 = false;
+        while(leTexte2 == false || leTexte2 == null){
+          leTexte2 = prompt('Veuillez saisir un autre texte')
+        }
+        leTexte2 = leTexte2.substr(1, (leTexte2.length - 2));
+        alert(leTexte2);
+      }
+      saisieTexte2();
       
       /*
       3. Utilisez la méthode .split() pour récupérer chacun des mot de la saisie utilisateur dans un tableau. Affichez séparément chaque mot dans une boîte de dialogue.
       */
+      const saisiePhrase = function(){
+        var laPhrase = '';
+        while(laPhrase == '' || laPhrase == null) {
+          laPhrase = prompt('Veuillez saisir une phrase');
+        }
+        laPhrase = laPhrase.split(' ');
+        for(var i = 0; i < laPhrase.length; i++) {
+          alert(laPhrase[i]);
+        }
+      };
+      saisiePhrase();
+
+
     </script>
   </head>
   <body>

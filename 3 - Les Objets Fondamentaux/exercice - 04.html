@@ -12,6 +12,15 @@
       /*
         1. Crééz un nouvel objet de type Date dans la mémoire.
       */
+     var date = new Date();
+     date.setHours(12,35,30);
+     var finCours = new Date();
+     finCours.setHours(17,00,00);
+     
+      
+     
+
+
 
       /*
         2. Ci-après consultez la liste des méthodes de l'objet construit avec Date à cette adresse http://www.commentcamarche.net/contents/571-javascript-l-objet-date (en bas de page).
@@ -19,7 +28,9 @@
 
       /*
         3. Utilisez l'objet créé pour afficher dans une boite de dialogue le nombre d'heures, de minutes et de secondes avant la fin du cours à (17:00:00)
-      */
+      */alert( ((finCours.getHours() -1) - date.getHours()) + ' heures et ' + ((finCours.getMinutes() + 59) - date.getMinutes()) + ' minutes et ' + ((finCours.getSeconds()+60) - date.getSeconds()) + ' secondes')
+
+
     </script>
   </head>
   <body>

@@ -26,13 +26,46 @@
       /*
         1. Obliger l'utilisateur à saisir un nombre. Afficher dans une boite de dialogue ce nombre mais arrondi (reprendre l'exercice que vous avez réalisé dans la partie JavaScript "procédural" et l'améliorer en utilisant l'objet Math).
       */
+     var saisieVirgule = function() {
+       var reponse = NaN;
+       while(isNaN(reponse) || reponse == null || Number.isInteger(reponse))  {
+         reponse = prompt('Veuillez saisir un nombre à virgule');
+         reponse = parseFloat(reponse);
+       }
+       reponse = (Math.round(reponse));
+       alert(reponse);
+     };
+    
 
       /*
         2. Les méthodes .ceil() et .floor() de l'objet Math permettent quant à elles d'obtenir l'arrondi à l'inférieur et l'arrondi au supérieur. Afficher dans une boite de dialogue le nombre saisi arrondi à l'inférieur puis l'arrondi au supérieur.
       */
+
+      var nombreArrondiInf = function() {
+        var nombre2 = NaN;
+        while(isNaN(nombre2) || nombre2 == null || Number.isInteger(nombre2)) {
+          nombre2 = prompt ('Saisir un autre nombre à virgule');
+          nombre2 = parseFloat(nombre2);
+        }
+        nombre2 = (Math.floor(nombre2));
+        alert('Arrondi inférieur ' + nombre2);
+      };
+
+
+      var nombreArrondiSup = function() {
+        var nombre3 = NaN;
+        while(isNaN(nombre3) || nombre3 == null || Number.isInteger(nombre3)) {
+          nombre3 = prompt ('Saisir un dernier nombre à virgule');
+          nombre3 = parseFloat(nombre3);
+        }
+        nombre3 = (Math.ceil(nombre3));
+        alert('Arrondi Supérieur ' + nombre3);
+      };
+
+
     </script>
   </head>
-  <body>
+  <body onload="saisieVirgule(), nombreArrondiInf(), nombreArrondiSup()">
     <h1>Titre principal</h1>
     <ul>
       <li>Premier point</li>

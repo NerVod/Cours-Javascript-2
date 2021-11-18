@@ -14,12 +14,48 @@
       /*
       1. Affichez dans une boite de dialogue le contenu de la propriété appName de l'objet dans window.navigator. Puis affichez le contenu de la propriété userAgent dans une boite de dialogue.
 
-      Qu'est-ce qui s'affiche sur IE, Mozilla, Chrome ?
-      */
+      Qu'est-ce qui s'affiche sur IE, Mozilla, Chrome ?  
       
+      IE: appName : Netscape  ,
+       userAgent : Mozilla/5.0(Windows NT 10.0;WOW64;Trident/7.0;.NET4.OC;.NET4.0E;.NET CLR 2.0.50727;.NET CLR 3.0.30729; .NET CLR 3.5.30729;Zoom 3.6.0;rv:11.0) like Gecko
+
+      Firefox :
+       appName Netscape   , 
+       userAgent : Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:94.0) Gecko/20100101 Firefox/94.0
+
+      Chrome : 
+      appName : Nestscape  ,
+       userAgent : Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36
+
+      */
+      alert(window.navigator.appName)
+      alert(window.navigator.userAgent);
+
       /*
       2. Utilisez ces propriétés pour réaliser l'algorithme suivant : SI je démarre mon script sur IE, j'affiche une boite de dialogue avec le texte 'So Lame !' à l'intérieur et j'ouvre une PoPUp vers le site de Mozilla Firefox, SINON SI je démarre mon script sur Chrome j'affiche une boite de dialogue avec le texte 'Spy On Me !' et j'ouvre une PoPUp vers la page wikipédia de http://fr.wikipedia.org/wiki/Chromium_%28navigateur_web%29 SINON j'affiche une boite de dialogue avec le texte 'Freed from Desire'.
       */
+
+      var ouverture = function() {
+        var navigateur = window.navigator.userAgent;
+        var comparateur = navigateur.split(' ');
+
+        for (var i = 0; i<comparateur.length; i++) {
+
+            if ( comparateur[i] == ['Trident']){
+              alert('So Lame !');
+              open('https://developer.mozilla.org/', 'MDN', 'directories=NO')
+            }else if (comparateur[i] == ['Chrome']) {
+              alert('Spy on Me');
+              open('http://fr.wikipedia.org/wiki/Chromium_%28navigateur_web%29', 'Wikipedia','directories=NO');
+            } 
+        }
+        
+         alert('Freed from desire !');
+        
+      };
+
+      ouverture();
+
     </script>
   </head>
   <body>

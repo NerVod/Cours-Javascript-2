@@ -3,6 +3,16 @@
   <head>
     <meta charset="UTF-8">
     <title>JavaScript & DOM : Le Modèle Objet du Document - Exercice 8</title>
+    <style>
+      .modifie{
+        color:crimson;
+        font-size: 2em;
+        font-weight: bold;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+
+      }
+
+    </style>
     <script>
       //Énoncé :
       /*
@@ -14,32 +24,64 @@
       /*
         1. Écrivez le programme suivant : AU CLIC sur le premier <li> changez la couleur, le poids et la taille de la police du premier <span> du titre de la première section. AU CLIC sur le deuxième <li> changez la couleur, le poids et la taille de la police du premier <span> du titre de la deuxième section. AU CLIC sur le troisième <li> changez la couleur, le poids et la taille de la police du premier <span> du titre de la troisième section.
       */
+
+     var changerTypo1 = function (){
+        var changerSpan1 = document.getElementById("premierSpan")
+        changerSpan1.style.color = "crimson";
+        changerSpan1.style.fontSize = "1.8em";
+        changerSpan1.style.fontWeight = "bold";
+      }; 
+
+      var changerTypo2 = function (){
+        var changerSpan2 = document.getElementById("deuxiemeSpan")
+        changerSpan2.style.color = "green";
+        changerSpan2.style.fontSize = "2.5em";
+        changerSpan2.style.fontWeight = "bold";
+      }; 
+
+      var changerTypo3 = function (){
+        var changerSpan3 = document.getElementById("troisiemeSpan")
+        changerSpan3.style.color = "blue";
+        changerSpan3.style.fontSize = "3em";
+        changerSpan3.style.fontWeight = "bold";
+      }; 
       
       /*
-        2. Écrivez le programme suivant : AU SURVOL du titre principal, effacez le propriétés de style des 3 <span> des 3 titres de section.
+        2. Écrivez le programme suivant : AU SURVOL du titre principal, effacez les propriétés de style des 3 <span> des 3 titres de section.
       */
+
+      var resetStyle = function(){
+        var changerSpan1 = document.getElementById("premierSpan");
+        var changerSpan2 = document.getElementById("deuxiemeSpan");
+        var changerSpan3 = document.getElementById("troisiemeSpan");
+        changerSpan1.style = "#";
+        changerSpan2.style = "#";
+        changerSpan3.style = "#";
+      };
+    
+
     </script>
   </head>
   <body>
-    <h1>Titre principal</h1>
+    <h1 onmouseover="resetStyle()">Titre principal</h1>
     <ul>
-      <li>Premier point</li>
-      <li>Deuxième point</li>
-      <li>Troisième point</li>
+      <li onclick="changerTypo1()">Premier point</li>
+      <li onclick="changerTypo2()">Deuxième point</li>
+      <li onclick="changerTypo3()">Troisième point</li>
     </ul>
     <div>
       <div>
-        <h2><span>1</span>. Titre de la première section</h2>
+        <h2><span id="premierSpan">1</span>. Titre de la première section</h2>
         <p><span>1.1</span>. Premier paragraphe de la première section et un <a href="#">lien</a>.</p>
         <p><span>1.2</span>. Deuxième paragraphe de la deuxième section et un <a href="#">lien</a>.</p>
       </div>
       <div>
-        <h2><span>2</span>. Titre de la deuxième section</h2>
+        <h2><span id ="deuxiemeSpan">2</span>. Titre de la deuxième section</h2>
         <p><span>2.1</span>. Premier paragraphe de la deuxième section.</p>
         <p><span>2.2</span>. Deuxième paragraphe de la deuxième section.</p>
       </div>
       <div>
-        <h2><span>3</span>. Titre de la troisième section</h2>
+        <h2><span id = "troisiemeSpan">3</span>. Titre de la troisième section</h2>
         <p><span>3.1</span>. Premier paragraphe de la troisième section.</p>
         <p><span>3.2</span>. Deuxième paragraphe de la troisième section.</p>
       </div>

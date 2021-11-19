@@ -14,7 +14,7 @@
       */
     </script>
   </head>
-  <body>
+  <body onload="bougerTitre()">
     <h1>Titre principal</h1>
     <ul>
       <li>Premier point</li>
@@ -38,5 +38,30 @@
         <p><span>3.2</span>. Deuxième paragraphe de la troisième section.</p>
       </div>
     </div>
+
+<script>
+
+var leTitre = document.querySelector('h1');
+
+var bougerTitre = function() {
+
+  window.setInterval( function() {
+    var laMarge = leTitre.style.marginLeft;
+    laMarge = parseFloat(laMarge);
+    if(isNaN(laMarge)){
+      laMarge = 0;
+    }
+
+    laMarge = laMarge + 2; 
+
+    leTitre.style.marginLeft = laMarge + 'px'
+    
+   }, 200) 
+
+
+};
+
+</script>
+
   </body>
 </html>

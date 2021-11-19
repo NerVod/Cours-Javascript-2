@@ -16,16 +16,25 @@
       /*
       2. Écrivez le programme suivant : AU CLIC sur la balise <h1>, la <div> principale doit s'afficher. Si on CLIC à nouveau sur le titre, la <div> principale doit se masquer. L'algorithme est le suivant : SI la <div> est masquée, je l'affiche, SINON je la masque.
       */
+        var basculer = function() {
+          var switcheur = window.document.getElementById("bascule");
+          if (switcheur.style.display == "none") {
+            switcheur.style.display = "inherit";
+          } else if (switcheur.style.display == "inherit") {
+            switcheur.style.display = "none";
+          }
+        };
+
     </script>
   </head>
   <body>
-    <h1>Titre principal</h1>
+    <h1 onclick="basculer()">Titre principal</h1>
     <ul>
       <li>Premier point</li>
       <li>Deuxième point</li>
       <li>Troisième point</li>
     </ul>
-    <div>
+    <div id = "bascule" style="display: none;">
       <div>
         <h2><span>1</span>. Titre de la première section</h2>
         <p><span>1.1</span>. Premier paragraphe de la première section et un <a href="#">lien</a>.</p>

@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <title>JavaScript & DOM : Le Modèle Objet du Document - Exercice 11</title>
+    
     <script>
       //Énoncé :
       /*
@@ -14,10 +15,14 @@
 
         Note : Pour ajouter 2px à 2px, vous devez d'abord transformer 2px en nombre, additionner le nombre obtenu et re-concaténer ce nombre avec le texte 'px'.
       */
+     
+   
+
+
     </script>
   </head>
   <body>
-    <h1>Titre principal</h1>
+    <h1 onclick="modifMarge()">Titre principal</h1>
     <ul>
       <li>Premier point</li>
       <li>Deuxième point</li>
@@ -40,5 +45,33 @@
         <p><span>3.2</span>. Deuxième paragraphe de la troisième section.</p>
       </div>
     </div>
+
+<script>
+
+
+var leTitre = window.document.querySelector('h1');
+
+    var modifMarge = function() {
+     
+      var laMarge = leTitre.style.marginLeft;
+       laMarge = parseFloat(laMarge);
+       if (isNaN(laMarge) || laMarge == null) {
+           laMarge = 0;
+       }
+       laMarge = laMarge + 2 ;
+       leTitre.style.marginLeft = laMarge + 'px';
+      }
+     
+     
+
+
+
+
+
+
+
+</script>
+
+
   </body>
 </html>

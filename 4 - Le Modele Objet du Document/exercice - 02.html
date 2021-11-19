@@ -17,7 +17,7 @@
       Qu'est-ce qui s'affiche sur IE, Mozilla, Chrome ?  
       
       IE: appName : Netscape  ,
-       userAgent : Mozilla/5.0(Windows NT 10.0;WOW64;Trident/7.0;.NET4.OC;.NET4.0E;.NET CLR 2.0.50727;.NET CLR 3.0.30729; .NET CLR 3.5.30729;Zoom 3.6.0;rv:11.0) like Gecko
+       userAgent : "Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; Zoom 3.6.0; rv:11.0) like Gecko"
 
       Firefox :
        appName Netscape   , 
@@ -25,7 +25,7 @@
 
       Chrome : 
       appName : Nestscape  ,
-       userAgent : Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36
+       userAgent : "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:94.0) Gecko/20100101 Firefox/94.0"
 
       */
       alert(window.navigator.appName)
@@ -41,17 +41,16 @@
 
         for (var i = 0; i<comparateur.length; i++) {
 
-            if ( comparateur[i] == ['Trident']){
+            if ( comparateur[i] == ['Trident/7.0;']){
               alert('So Lame !');
               open('https://developer.mozilla.org/', 'MDN', 'directories=NO')
-            }else if (comparateur[i] == ['Chrome']) {
+            }else if (comparateur[i] == ['Chrome/95.0.4638.69']) {
               alert('Spy on Me');
               open('http://fr.wikipedia.org/wiki/Chromium_%28navigateur_web%29', 'Wikipedia','directories=NO');
-            } 
-        }
-        
-         alert('Freed from desire !');
-        
+            } else if (comparateur[i] == ['Firefox/94.0']) {
+              alert('Freed from desire !');
+            }
+        } 
       };
 
       ouverture();

@@ -38,5 +38,55 @@
         <p><span>3.2</span>. Deuxième paragraphe de la troisième section.</p>
       </div>
     </div>
+<script>
+
+var leTitre = window.document.querySelector('h1');
+leTitre.style.position = "absolute";
+var opacite = leTitre.style.opacity;
+opacite = 0;
+
+
+var Apparait = function() {
+  if (opacite == 0) {
+      
+      window.setInterval( function() {
+        opacite = opacite + 0.05;
+        leTitre.style.opacity = opacite;   
+      }, 1000); 
+      if(opacite == 1){
+        window.clearInterval(this);
+      }
+  };
+};
+
+var bougeTitre = function() {
+  window.setInterval( function() {
+    var MargeHaut = leTitre.style.marginTop;
+    MargeHaut = parseFloat(MargeHaut);
+    if(isNaN(MargeHaut)){
+      MargeHaut = 0;
+    }
+    MargeHaut++;
+    leTitre.style.marginTop = MargeHaut + ('px');
+  },200  )
+};
+
+
+
+bougeTitreEtApparait = function() {
+  Apparait();
+  bougeTitre();
+}
+
+
+
+
+
+
+window.document.body.onload = bougeTitreEtApparait();
+
+
+</script>
+
   </body>
 </html>

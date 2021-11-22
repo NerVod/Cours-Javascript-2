@@ -1,0 +1,8 @@
+
+- Création d'objet à l'aide de littéraux ou de constructeurs
+- Comment créer des structures d'objets élaborées à l'aide de fonctions constructeur ?
+- Revenir sur le prototypage, la création de prototypes, et design pattern prototype;
+- Comment utiliser les méthodes des objets fondamentaux à bon escient ?
+- Comment utiliser les méthodes du DOM pour récupérer une référence à un objet du DOM en utilisant un sélecteur CSS ?
+- Traiter de la gestion des évènements et objets d'évènement
+

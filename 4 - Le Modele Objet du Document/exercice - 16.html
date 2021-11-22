@@ -4,6 +4,100 @@
     <meta charset="UTF-8">
     <title>JavaScript & DOM : Le Modèle Objet du Document - Exercice 16</title>
     <script>
+      var interpolationDuSprite = {
+        positionDeBase: [{
+          widthContainer: 64 +'px',
+          heightContainer: 100 +'px',
+          margeHaut: 0 +'px',
+          margeGauche: -4 + 'px',
+        },],
+        avancer: [{
+          widthContainer: 69 +'px',
+          heightContainer: 94 +'px',
+          margeHaut: -203 +'px',
+          margeGauche: 0 + 'px',
+        },          
+        {
+          widthContainer: 100 +'px',
+          heightContainer: 94 +'px',
+          margeHaut: -203 +'px',
+          margeGauche: -72 + 'px',
+        },
+        {
+          widthContainer: 60 +'px',
+          heightContainer: 94 +'px',
+          margeHaut: -203 +'px',
+          margeGauche: -172 + 'px',
+        },
+        {
+          widthContainer: 81 +'px',
+          heightContainer: 94 +'px',
+          margeHaut: -203 +'px',
+          margeGauche: -237 + 'px',
+        },
+        {
+          widthContainer: 64 +'px',
+          heightContainer: 94 +'px',
+          margeHaut: -199 +'px',
+          margeGauche: -317 + 'px',
+        },
+        {
+          widthContainer: 88 +'px',
+          heightContainer: 94 +'px',
+          margeHaut: -199 +'px',
+          margeGauche: -378 + 'px',
+        },
+        {
+          widthContainer: 58 +'px',
+          heightContainer: 94 +'px',
+          margeHaut: -199 +'px',
+          margeGauche: -462 + 'px',
+        },
+        {
+          widthContainer: 72 +'px',
+          heightContainer: 94 +'px',
+          margeHaut: -196 +'px',
+          margeGauche: -525 + 'px',
+        },
+      ],
+      coupSpecial:[{
+        widthContainer: 60 +'px',
+        heightContainer: 94 +'px',
+        margeHaut: -405 +'px',
+        margeGauche: -261 + 'px',
+      },
+      {
+        widthContainer: 60 +'px',
+        heightContainer: 94 +'px',
+        margeHaut: -405 +'px',
+        margeGauche: -324 + 'px',
+      },
+      {
+        widthContainer: 60 +'px',
+        heightContainer: 94 +'px',
+        margeHaut: -405 +'px',
+        margeGauche: -383 + 'px',
+      },
+      {
+        widthContainer: 60 +'px',
+        heightContainer: 94 +'px',
+        margeHaut: -405 +'px',
+        margeGauche: -440 + 'px',
+      },
+      {
+        widthContainer: 60 +'px',
+        heightContainer: 94 +'px',
+        margeHaut: -405 +'px',
+        margeGauche: -497 + 'px',
+      },
+      {
+        widthContainer: 81 +'px',
+        heightContainer: 108 +'px',
+        margeHaut: -282 +'px',
+        margeGauche: -556 + 'px',
+      },
+    ]
+      };
       //Énoncé :
       /*
         En JavaScript, on a accès à des objets qui contiennent les informations relatives au navigateurs Internet : le DOM. L'objet qui permet d'accéder au DOM est l'objet window. Cet objet est l'objet de plus haut niveau en JavaScript. L'objet window contient des sous objets que nous allons exploiter.
@@ -42,7 +136,7 @@
               //instructions
               // alert('droite');          
               deplacerSpriteDroite(); 
-              avanceDroite()
+              avanceDroite();
             break;
 
             case 40:
@@ -50,7 +144,13 @@
               // alert('bas');
           
           deplacerSpriteBas();
+          avanceBas();
             break;
+
+            case 13:
+              coupSpecial();
+              break; 
+
           };
 
         };
@@ -162,67 +262,121 @@ var leSprite = document.getElementById('container');
   * DEPLACEMENT DE l'IMAGE DANS LE SPRITE
   */ 
 var imageSprite = document.getElementById('contenu');
+var widthContainer = leSprite.style.width;
+var heightContainer = leSprite.style.height;
+var margeHaut = imageSprite.style.marginTop;
+var margeGauche = imageSprite.style.marginLeft;
 
-  var avanceDroite = function(){
-    var margeGauche = imageSprite.style.marginLeft;
-    margeGauche = parseFloat(margeGauche)
-    var margeHaut = imageSprite.style.marginTop;
-    margeHaut= parseFloat(margeHaut);
-    margeHaut = -296;
-    leSprite.style.width = '80px';
-    if(isNaN(margeGauche)){
-      margeGauche = 8;
-    }
-    if ( margeGauche <= 8){
-      margeGauche = margeGauche - 74;
-    }
-    if (margeGauche<= -436){
-      margeGauche = 8
-    }
-    imageSprite.style.marginLeft = margeGauche + 'px';
-    imageSprite.style.marginTop = margeHaut + 'px';
+var avanceDroite = function() {
+  imageSprite = interpolationDuSprite.avancer[0];
+  for ( var i = 0; i < interpolationDuSprite.avancer.length; i++ ) {
+    widthContainer = interpolationDuSprite.avancer[i];
+    heightContainer = interpolationDuSprite.avancer[i];
+    margeHaut = interpolationDuSprite.avancer[i];
+    margeGauche = interpolationDuSprite.avancer[i];
+    i++;
   }
+}
 
-  var avanceGauche = function(){
-    var margeGauche = imageSprite.style.marginLeft;
-    margeGauche = parseFloat(margeGauche)
-    var margeHaut = imageSprite.style.marginTop;
-    margeHaut= parseFloat(margeHaut);
-    margeHaut = -296;
-    leSprite.style.width = '80px';
+  // var avanceDroite = function(){
+  //   var margeGauche = imageSprite.style.marginLeft;
+  //   margeGauche = parseFloat(margeGauche)
+  //   var margeHaut = imageSprite.style.marginTop;
+  //   margeHaut= parseFloat(margeHaut);
+  //   margeHaut = -296;
+  //   leSprite.style.width = '80px';
+  //   if(isNaN(margeGauche)){
+  //     margeGauche = 8;
+  //   }
+  //   if ( margeGauche <= 8){
+  //     margeGauche = margeGauche - 74;
+  //   }
+  //   if (margeGauche<= -436){
+  //     margeGauche = 8
+  //   }
+  //   imageSprite.style.marginLeft = margeGauche + 'px';
+  //   imageSprite.style.marginTop = margeHaut + 'px';
+  // }
+  // var avanceGauche = function(){
+  //   var margeGauche = imageSprite.style.marginLeft;
+  //   margeGauche = parseFloat(margeGauche)
+  //   var margeHaut = imageSprite.style.marginTop;
+  //   margeHaut= parseFloat(margeHaut);
+  //   margeHaut = -296;
+  //   leSprite.style.width = '80px';
 
-    if(isNaN(margeGauche)){
-      margeGauche = -436;
-    }
-    if ( margeGauche >= -436){
-      margeGauche = margeGauche + 74;
-    }
-    if (margeGauche>= 8){
-      margeGauche = -436;
-    }
-    imageSprite.style.marginLeft = margeGauche + 'px';
-    imageSprite.style.marginTop = margeHaut + 'px';
-  }
-  var avanceHaut = function(){
-    var margeGauche = imageSprite.style.marginLeft;
-    margeGauche = parseFloat(margeGauche)
-    var margeHaut = imageSprite.style.marginTop;
-    margeHaut= parseFloat(margeHaut);
-    margeHaut = -107;
-    leSprite.style.width = '68px'
+  //   if(isNaN(margeGauche)){
+  //     margeGauche = -436;
+  //   }
+  //   if ( margeGauche >= -436){
+  //     margeGauche = margeGauche + 74;
+  //   }
+  //   if (margeGauche>= 8){
+  //     margeGauche = -436;
+  //   }
+  //   imageSprite.style.marginLeft = margeGauche + 'px';
+  //   imageSprite.style.marginTop = margeHaut + 'px';
+  // }
+  // var avanceHaut = function(){
+  //   var margeGauche = imageSprite.style.marginLeft;
+  //   margeGauche = parseFloat(margeGauche)
+  //   var margeHaut = imageSprite.style.marginTop;
+  //   margeHaut= parseFloat(margeHaut);
+  //   margeHaut = -107;
+  //   leSprite.style.width = '64px'
 
-    if(isNaN(margeGauche)){
-      margeGauche = 5;
-    }
-    if ( margeGauche <= 5){
-      margeGauche = margeGauche - 58;
-    }
-    // if (margeGauche<= 8){
-    //   margeGauche = -436;
-    // }
-    imageSprite.style.marginLeft = margeGauche + 'px';
-    imageSprite.style.marginTop = margeHaut + 'px';
-  }
+  //   if(isNaN(margeGauche)){
+  //     margeGauche = 5;
+  //   }
+  //   if ( margeGauche <= 5){
+  //     margeGauche = margeGauche - 57;
+  //   }
+  //   if (margeGauche<= -384){
+  //     margeGauche = 5;
+  //   }
+  //   imageSprite.style.marginLeft = margeGauche + 'px';
+  //   imageSprite.style.marginTop = margeHaut + 'px';
+  // }
+
+  // var avanceBas = function(){
+  //   var margeGauche = imageSprite.style.marginLeft;
+  //   margeGauche = parseFloat(margeGauche)
+  //   var margeHaut = imageSprite.style.marginTop;
+  //   margeHaut= parseFloat(margeHaut);
+  //   margeHaut = -107;
+  //   leSprite.style.width = '64px'
+
+  //   if(isNaN(margeGauche)){
+  //     margeGauche = -384;
+  //   }
+  //   if ( margeGauche >= -384){
+  //     margeGauche = margeGauche + 55;
+  //   }
+  //   if (margeGauche >= 5){
+  //     margeGauche = -384;
+  //   }
+  //   imageSprite.style.marginLeft = margeGauche + 'px';
+  //   imageSprite.style.marginTop = margeHaut + 'px';
+  // };
+
+
+  // var coupSpecial = function(){
+  //   var margeGauche = imageSprite.style.marginLeft;
+  //   margeGauche = parseFloat(margeGauche)
+  //   margeGauche = -289;
+  //   var margeHaut = imageSprite.style.marginTop;
+  //   margeHaut= parseFloat(margeHaut);
+  //   margeHaut = -556;
+  //   leSprite.style.width = '64px';
+  //   if(isNaN(margeGauche)){
+  //     margeGauche = -289;
+  //   }
+  //   if(isNaN(margeHaut)){
+  //     margeHaut = -556;
+  //   }
+  //   imageSprite.style.marginLeft = margeGauche + 'px';
+  //   imageSprite.style.marginTop = margeHaut + 'px';
+  // };
 
   
 

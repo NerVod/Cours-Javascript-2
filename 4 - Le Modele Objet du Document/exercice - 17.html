@@ -57,9 +57,10 @@
             window.document.body.children[2].children[1].children[2].children[0].appendChild(newImage);
           };
 
-          document.querySelector("body > h1").onclick = function() {
-            creationImage();
-          };
+          // document.querySelector("body > h1").onclick = function() {
+          //   creationImage();
+          // };
+          document.querySelector("body > h1").addEventListener('click', function(){creationImage()},false)
 
 </script>
 

@@ -51,9 +51,10 @@
         document.querySelector("body > div > div:nth-child(3) > p:nth-child(3) > span").appendChild(leLien);
       }
       laCible = document.querySelector("body > ul > li:nth-child(1)");
-      laCible.onclick = function() {
-        nouveauTexte();
-      }
+      // laCible.onclick = function() {
+      //   nouveauTexte();
+      // }
+      laCible.addEventListener('click', function(){nouveauTexte()}, false);
 
     </script>
   </body>

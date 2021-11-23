@@ -16,6 +16,10 @@
       /*
         1. AU CLIC sur le titre principal, utilisez la méthode .createElement() pour créer un objet correspondant à une balise image. Renseignez les propriétés title, alt et src de cet objet. Utilisez appendChild pour ajouter cette balise image dans le <span> 2.2
       */
+          
+         
+
+
     </script>
   </head>
   <body>
@@ -42,5 +46,22 @@
         <p><span>3.2</span>. Deuxième paragraphe de la troisième section et un <a href="#">lien</a>.</p>
       </div>
     </div>
+
+<script>
+          var creationImage = function(){
+            var newImage = window.document.createElement("img");
+            newImage.title = " sprite DBZ";
+            newImage.alt = "image Sprite DBZ";
+            newImage.src = "Goku.gif";
+
+            window.document.body.children[2].children[1].children[2].children[0].appendChild(newImage);
+          };
+
+          document.querySelector("body > h1").onclick = function() {
+            creationImage();
+          };
+
+</script>
+
   </body>
 </html>

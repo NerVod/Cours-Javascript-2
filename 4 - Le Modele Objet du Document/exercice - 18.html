@@ -40,5 +40,21 @@
         <p><span>3.2</span>. Deuxième paragraphe de la troisième section et un <a href="#">lien</a>.</p>
       </div>
     </div>
+
+
+    <script>
+      var nouveauTexte = function() {
+      
+        var leLien = document.createElement("a");
+        var leTexte = document.createTextNode("Du Nouveau Texte Créé Par le JS DOM !!!!!");
+        leLien.appendChild(leTexte);
+        document.querySelector("body > div > div:nth-child(3) > p:nth-child(3) > span").appendChild(leLien);
+      }
+      laCible = document.querySelector("body > ul > li:nth-child(1)");
+      laCible.onclick = function() {
+        nouveauTexte();
+      }
+
+    </script>
   </body>
 </html>

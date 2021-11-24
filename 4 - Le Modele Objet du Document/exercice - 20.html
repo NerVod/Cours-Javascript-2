@@ -94,22 +94,75 @@ window.document.body.appendChild(newDiv);
 //   window.document.body.addEventListener("DOMMouseScroll", function(event) { alert(event.detail)},false);
 // }
 
+
+// var bDD = function() {
+//   window.document.body.addEventListener("DOMMouseScroll", function(event) {
+    
+
+//     var deplacementDiv = event.detail;
+//     deplacementDiv = parseFloat(deplacementDiv);
+    
+//     var divTop = parseFloat(newDiv.style.top);
+//     newDiv.style.top = divTop + deplacementDiv + 'px';
+    
+    
+//     console.log(event.detail)
+//    },false);
+   
+// }
+
+
 // window.addEventListener('load', function(){bDD()}, false);
+//////////////////////////////////////////////////////////////////////
+////////////verrif navigateur client//////////////////////////////////
+//////////////////////////////////////////////////////////////////////
+
 
 var bDD = function() {
-  window.document.body.addEventListener("DOMMouseScroll", function(event) {
-    
-    var deplacementDiv = event.detail;
-    deplacementDiv = parseFloat(deplacementDiv);
-    
-    var divTop = parseFloat(newDiv.style.top);
-    newDiv.style.top = divTop + deplacementDiv + 'px';
-    
-    
-    console.log(event.detail)
-   },false);
-   
+
+  if (window.document.addEventListener) {
+	// IE9, Chrome, Safari, Opera
+	window.document.addEventListener("mousewheel", evenementMouseWheel, false);
+	// Firefox
+	window.document.addEventListener("DOMMouseScroll", evenementMouseWheel, false);
 }
+// IE 6/7/8
+else window.document.attachEvent("onmousewheel", evenementMouseWheel);
+
+function evenementMouseWheel(event){
+  var event = window.event || wheelEvent;
+  var deplacementDiv = event.detail || event.deltaY || event.wheelDelta;
+  deplacementDiv = parseFloat(deplacementDiv);
+  console.log(event)
+
+  var divTop = parseFloat(newDiv.style.top);
+  newDiv.style.top = divTop + deplacementDiv + 'px';
+
+}
+
+
+}
+
+
+
+
+
+
+    
+    
+   
+      // window.document.addEventListener("wheel", function(event){
+      //   var deplacementDiv = event.detail;
+      //   deplacementDiv = parseFloat(deplacementDiv);
+        
+      //   var divTop = parseFloat(newDiv.style.top);
+      //   newDiv.style.top = divTop + deplacementDiv + 'px';
+      //   console.log(event.detail)
+      // }, false );
+ 
+     
+   
+
 
 window.addEventListener('load', function(){bDD()}, false);
 

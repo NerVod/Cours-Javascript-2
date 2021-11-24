@@ -18,9 +18,10 @@
       1. Obligez l'utilisateur à saisir une chaîne de caractères dans une boite de dialogue. Un fois la saisie validée. Affichez dans une boite de dialogue le nombre de caractères de la chaîne de caractères saisie (propriété .length). 
       */
      const saisieTexte = function() {
-       var leTexte = false;
-       while(leTexte == null || leTexte == false ){
+       var leTexte = '';
+       while(leTexte == null || leTexte == ''){
          leTexte = prompt('Veuillez saisir un message');
+         
        }
        alert(leTexte.length);
      }
@@ -31,8 +32,8 @@
       */
 
       const saisieTexte2 = function() {
-        var leTexte2 = false;
-        while(leTexte2 == false || leTexte2 == null){
+        var leTexte2 = '';
+        while(leTexte2 == '' || leTexte2 == null){
           leTexte2 = prompt('Veuillez saisir un autre texte')
         }
         leTexte2 = leTexte2.substr(1, (leTexte2.length - 2));
@@ -45,7 +46,7 @@
       */
       const saisiePhrase = function(){
         var laPhrase = '';
-        while(laPhrase == '' || laPhrase == null) {
+        while(laPhrase == '' || laPhrase == null ) {
           laPhrase = prompt('Veuillez saisir une phrase');
         }
         laPhrase = laPhrase.split(' ');

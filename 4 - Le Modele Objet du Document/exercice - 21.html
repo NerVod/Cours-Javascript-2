@@ -56,24 +56,27 @@
   chat.style.width = '80px';
   chat.style.height = '120px'
   chat.style.position = 'absolute';
-  chat.style.top = '15em';
-  chat.style.left = '25em';
   window.document.body.appendChild(chat);
 
   
 
   var attrapeSouris = function() {
 
-    var positionX = event.screenX;
-    var positionY = event.screenY;
+    if (addEventListener)
+    var positionX = event.pageX;
+    var positionY = event.pageY;
     console.log(positionX);
     console.log(positionY);
+    chat.style.left = positionX -35 +'px';
+    chat.style.top = positionY + 'px';
+
 
   }
     
   
   
-  window.addEventListener('load', function() {attrapeSouris()})
+  window.addEventListener('mousemove', function(event) {attrapeSouris()})
+  window.document.attachEvent('onmousemove', attrapeSouris());
  
 
   

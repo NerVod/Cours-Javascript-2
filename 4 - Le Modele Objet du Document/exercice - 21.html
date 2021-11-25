@@ -45,5 +45,43 @@
         <p><span>3.2</span>. Deuxième paragraphe de la troisième section et un <a href="#">lien</a>.</p>
       </div>
     </div>
+
+<script>
+
+
+  var chat =  window.document.createElement('img');
+  chat.title = 'un chat';
+  chat.src = 'chat.png';
+  chat.alt = 'un chat'
+  chat.style.width = '80px';
+  chat.style.height = '120px'
+  chat.style.position = 'absolute';
+  chat.style.top = '15em';
+  chat.style.left = '25em';
+  window.document.body.appendChild(chat);
+
+  
+
+  var attrapeSouris = function() {
+
+    var positionX = event.screenX;
+    var positionY = event.screenY;
+    console.log(positionX);
+    console.log(positionY);
+
+  }
+    
+  
+  
+  window.addEventListener('load', function() {attrapeSouris()})
+ 
+
+  
+
+  
+
+
+</script>
+
   </body>
 </html>

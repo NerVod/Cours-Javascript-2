@@ -60,5 +60,22 @@
         <p><span>3.2</span>. Deuxième paragraphe de la troisième section et un <a href="#">lien</a>.</p>
       </div>
     </div>
+
+    <script>
+
+      var leCanvas = window.document.createElement('canvas');
+      leCanvas.style.width = '600px';
+      leCanvas.style.height = '600px';
+      leCanvas.style.border = '1px solid red';
+      window.document.querySelector("body > div").appendChild(leCanvas);
+
+      
+      var fonctionAuClic = function() {
+        console.log(leCanvas);
+      }
+      var leParagraphe = window.document.querySelector('p')
+      leParagraphe.addEventListener('click', fonctionAuClic, false)
+
+    </script>
   </body>
 </html>

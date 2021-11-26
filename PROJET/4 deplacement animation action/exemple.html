@@ -1,0 +1,156 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>Déclenchement d'une animation en réaction à une action</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <script type="text/javascript"> 
+      window.onload = function(){
+
+        var objetHTMLDiv = window.document.getElementById('container');
+        var objetHTMLImg = window.document.getElementById('contenu');
+
+        var aGauche = function(){
+          //déplacement du container sur la gauche
+          if(objetHTMLDiv.style.left == ''){
+            objetHTMLDiv.style.left = '0px';
+          };
+          objetHTMLDiv.style.left = (parseFloat(objetHTMLDiv.style.left)-10)+'px';
+          //déplacement de l'image vers la droite
+          objetHTMLImg.style.top = '0px';
+          objetHTMLImg.style.transform = 'scaleX(-1)';
+          if(objetHTMLImg.style.left == ''){
+            objetHTMLImg.style.left = '0px';
+          };
+          if(Math.abs(parseFloat(objetHTMLImg.style.left))<(32*6)){
+            objetHTMLImg.style.left = (parseFloat(objetHTMLImg.style.left)-32)+'px';
+          }else{
+            objetHTMLImg.style.left = '0px';
+          };
+        };
+
+        var aDroite = function(){
+          //déplacement du container sur la droite
+          if(objetHTMLDiv.style.left == ''){
+            objetHTMLDiv.style.left = '0px';
+          };
+          objetHTMLDiv.style.left = (parseFloat(objetHTMLDiv.style.left)+10)+'px';
+          //déplacement de l'image vers la gauche
+          objetHTMLImg.style.top = '0px';
+          objetHTMLImg.style.transform = 'scaleX(1)';
+          if(objetHTMLImg.style.left == ''){
+            objetHTMLImg.style.left = '0px';
+          };
+          if(Math.abs(parseFloat(objetHTMLImg.style.left))<(32*6)){
+            objetHTMLImg.style.left = (parseFloat(objetHTMLImg.style.left)-32)+'px';
+          }else{
+            objetHTMLImg.style.left = '0px';
+          };
+        };
+
+        var auRepos = function(){
+          stopAction();
+          if(objetHTMLImg.style.transform == ''){
+            objetHTMLImg.style.transform = 'scaleX(1)';
+          };
+          objetHTMLImg.style.top = '-32px';
+          if(objetHTMLImg.style.transform == 'scaleX(1)'){
+            objetHTMLImg.style.left = '-128px';
+          }else{
+            objetHTMLImg.style.left = '-98px';
+          };
+        };
+
+        var actionChrono;
+        var stopAction = function(){
+          if(actionChrono != undefined){
+            window.clearInterval(actionChrono);
+          }
+        };
+
+        var enAction = function(){
+          if(objetHTMLImg.style.transform == ''){
+            objetHTMLImg.style.transform = 'scaleX(1)';
+          };
+          objetHTMLImg.style.top = '-129px';
+          if(objetHTMLImg.style.transform == 'scaleX(1)'){
+            if(Math.abs(parseFloat(objetHTMLImg.style.left))<(3*32)){
+              objetHTMLImg.style.left = (parseFloat(objetHTMLImg.style.left)-33)+'px';
+            }else{
+              objetHTMLImg.style.left = '0px';
+            }
+          }else{
+            if(Math.abs(parseFloat(objetHTMLImg.style.left))>(2*32)){
+              objetHTMLImg.style.left = (parseFloat(objetHTMLImg.style.left)+32)+'px';
+            }else{
+              objetHTMLImg.style.left = '-222px';
+            }
+          };
+        };
+
+        //fonction déclenchée lorsqu'on appuie sur une touche
+        window.onkeydown = function(event){
+
+          var code = event.keyCode;
+
+          switch(code){
+            case 37:
+              //instructions
+              //alert('gauche');
+              aGauche();
+            break;
+            case 38:
+              //instructions
+              alert('haut');
+              
+            break;
+            case 39:
+              //instructions
+              //alert('droite');
+              aDroite();
+            break;
+            case 40:
+              //instructions
+              alert('bas');
+              
+            break;
+            case 13:
+              //instructions
+              //alert('entrée');
+              stopAction();
+              actionChrono = window.setInterval(enAction,75);;
+            break;
+          };
+        };
+
+        window.onkeyup = function(){
+          auRepos();
+        };
+
+      };
+    </script>
+    <style type="text/css">
+      .masque{
+        width: 32px;
+        height: 32px;
+        overflow: hidden;
+        position: absolute;
+      }
+      .sprite{
+        top:-32px;
+        left:-128px;
+        position: absolute;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Play !</h1>
+    <div>
+      <div class="masque" id="container">
+        <img width="256" height="256" src="./img/zelda.png" id="contenu" class="sprite" src="" alt="sprite" title="sprite"/>
+      </div>
+    </div>
+    <noscript>
+      <p>Veuillez activer JavaScript</p>
+    </noscript>
+  </body>
+</html>

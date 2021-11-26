@@ -11,13 +11,21 @@
       */
 
       /*
-        1. A la soumission du formulaire (évènement onsubmit spécifique au éléments HTML de type form), afficher dans une boite de dialogue la valeur saisie dans le champ de saisie du formulaire. (l'attribut correspondant à la valeur du champ porte le même nom que la propriété de l'objet correspondant en mémoire).
+        1. A la soumission du formulaire (évènement onsubmit spécifique aux éléments HTML de type form), afficher dans une boite de dialogue la valeur saisie dans le champ de saisie du formulaire. (l'attribut correspondant à la valeur du champ porte le même nom que la propriété de l'objet correspondant en mémoire).
       */
 
       /*
         2. A la soumission du formulaire, SI le champ est vide, je crée une élément HTML de type p avec la class erreur et je l'ajoute dans le document en dessous du formulaire et j'empêche le formulaire d'être envoyé par le navigateur Internet.
       */
       
+      saisieVide = function() {
+        var nouveauP = window.document.createElement('p');
+        nouveauP.classList='erreur';
+        window.document.querySelector("body > div").appendChild(nouveauP);
+        
+
+      }
+
 
       /*
         Astuce : Si dans un gestionnaire d'évènement (fonction/méthode associée à l'événement), j'exécute la méthode .preventDefault() de l'objet d'évènement, le navigateur Internet ne poursuit pas le comportement par défaut associé à l'événement. Cette méthode est documentée sur le MDN ici : https://developer.mozilla.org/fr/docs/Web/API/Event/preventDefault
@@ -48,5 +56,44 @@
         <p><span>3.2</span>. Deuxième paragraphe de la troisième section et un <a href="#">lien</a>.</p>
       </div>
     </div>
+
+
+    <script>
+var formulaire = window.document.createElement('form');
+formulaire.action = 'http://www.google.com'
+formulaire.method= 'GET'
+
+window.document.querySelector("body > div > div:nth-child(3)").appendChild(formulaire);
+
+
+var champsSaisie = window.document.createElement('input');
+champsSaisie.type = 'text';
+champsSaisie.name = 'SaisieUtilisateur';
+champsSaisie.style.height = '20px';
+champsSaisie.style.width = '200px';
+champsSaisie.placeholder = 'Saisir un message';
+
+
+var boutonValider = window.document.createElement('input');
+boutonValider.type = 'submit';
+boutonValider.value = 'Valider';
+boutonValider.style.height= '20px';
+boutonValider.style.width = '100px';
+boutonValider.style.marginLeft = '10px';
+
+formulaire.appendChild(champsSaisie);
+
+formulaire.appendChild(boutonValider);
+
+window.document.addEventListener('submit', function() {
+  var laReponse = champsSaisie.value;
+  alert(laReponse);
+}, false);
+
+
+
+
+
+    </script>
   </body>
 </html>

@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <title>Élément impossible à sélectionner</title>
+    <style type="text/css">
+      *.unselectable {
+         -moz-user-select: -moz-none;
+         -khtml-user-select: none;
+         -webkit-user-select: none;
+
+         /*
+           Introduced in IE 10.
+           See http://ie.microsoft.com/testdrive/HTML5/msUserSelect/
+         */
+         -ms-user-select: none;
+         user-select: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <p unselectable="on" class="unselectable">Élément impossible à sélectionner sur tous les navigateurs Internet</p>
+      <p>Élément sélectionnable.</p>
+    </div>
+    <p><i>L'attribut unselectable est nécessaire sur Opéra et IE < 10. La classe CSS ne fonctionne pas sur ces navigateurs.</i></p>
+    <div>
+      <p><i>Attention les sous-éléments n'héritent pas de l'attribut unselectable sur Opéra et IE < 10. Par exemple :</i></p>
+      <div unselectable="on" class="unselectable">
+        Pas séléctionnable sur Opéra et IE < 10.  Pas séléctionnable sur les autres navigateurs Internet...
+        <p>Séléctionnable sur Opéra et IE < 10 ! Pas séléctionnable sur les autres navigateurs Internet...</p>
+      </div>
+      <p><i>Si on a de nombreux sous-éléments, il faut créer un code JS qui place l'attribut unselectable sur tous les enfants pour gérer la compatibilité avec Opéra et IE < 10.</i></p>
+      <p><i>Voir : http://stackoverflow.com/questions/2326004/prevent-selection-in-html</i></p>
+    </div>
+  </body>
+</html>

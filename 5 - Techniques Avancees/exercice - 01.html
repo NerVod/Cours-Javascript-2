@@ -63,5 +63,30 @@
         <p><span>3.2</span>. Deuxième paragraphe de la troisième section et un <a href="#">lien</a>.</p>
       </div>
     </div>
+
+<script>
+var monObjet = {
+methode1:function(){alert(this.methode1)},
+methode2:function(){alert(this.methode2)},
+methode3:function(){alert(this.methode3)},
+};
+monObjet.methode1(),monObjet.methode2(),monObjet.methode3()
+
+var $createurObjet = function (methode1,methode2,methode3){
+  return{
+    methode1:methode1,
+    methode2:methode2,
+    methode3:methode3,
+  }
+};
+
+var compteur = $createurObjet(console.dir('et 1 '), console.dir('et 2 '), console.dir('et 3 !'));
+
+var compteur2 = $createurObjet(console.log('et encore 1'), console.log('et encore 2'), console.log('et encore 3 !'));
+
+$createurObjet(console.log('azerty'),console.log('qsdf'),console.log('wxcvb'));
+
+</script>
+
   </body>
 </html>

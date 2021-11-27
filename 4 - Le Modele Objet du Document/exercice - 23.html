@@ -64,17 +64,74 @@
     <script>
 
       var leCanvas = window.document.createElement('canvas');
-      leCanvas.style.width = '600px';
-      leCanvas.style.height = '600px';
+      leCanvas.style.width = '200px';
+      leCanvas.style.height = '100px';
+      leCanvas.style.margin = '1px'
+      leCanvas.style.position = 'absolute';
+
       leCanvas.style.border = '1px solid red';
       window.document.querySelector("body > div").appendChild(leCanvas);
-
-      
+      var leCalque =  leCanvas.getContext('2d');
+      var leCarre;
+      var margeHaut = 0;
+      var margeGauche = 0;
+      var largeurCarre = 25;
+      var hauteurCarre = 25;
+      var ratio = 3;
       var fonctionAuClic = function() {
-        console.log(leCanvas);
+        leCalque.clearRect(margeHaut*ratio,margeGauche*ratio,largeurCarre*ratio,hauteurCarre*ratio);
+        leCalque.fillStyle = 'rgb(255,0,0)';
+        leCarre = leCalque.fillRect(margeHaut,margeGauche, largeurCarre, hauteurCarre);    
+        margeHaut += 2 ;
+        margeGauche += 2;
+
+        return {
+          margeGauche,
+          margeHaut,
+        } 
+      };
+      
+
+      var StopFonctionClic = function() {
+        clearInterval(fonctionClicInterval)
       }
+     
+      var fonctionClicInterval = setInterval(fonctionAuClic,50, )
+      window.setTimeout(StopFonctionClic, 3500);
+
+
       var leParagraphe = window.document.querySelector('p')
       leParagraphe.addEventListener('click', fonctionAuClic, false)
+
+
+      var leCarre2;
+      var margeHaut2 = 0;
+      var margeGauche2 = 10;
+      var largeurCarre2 = 25;
+      var hauteurCarre2 = 25;
+      
+      var fonctionFrame = function() {
+        leCalque.clearRect(margeHaut2,margeGauche2,largeurCarre2,hauteurCarre2);
+        leCalque.fillStyle = 'rgb(0,255,0)';
+        leCarre2 = leCalque.fillRect(margeHaut2,margeGauche2, largeurCarre2, hauteurCarre2);      
+        margeHaut += 2 ;
+        margeGauche += 2;
+
+        return {
+          margeGauche2,
+          margeHaut2,
+        } 
+      };    
+
+      
+        
+      
+      window.requestAnimationFrame(fonctionFrame);
+
+      
+
+
+
 
     </script>
   </body>

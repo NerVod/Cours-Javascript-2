@@ -64,8 +64,8 @@
     <script>
 
       var leCanvas = window.document.createElement('canvas');
-      leCanvas.style.width = '200px';
-      leCanvas.style.height = '100px';
+      leCanvas.style.width = '1200px';
+      leCanvas.style.height = '800px';
       leCanvas.style.margin = '1px'
       leCanvas.style.position = 'absolute';
 
@@ -79,7 +79,7 @@
       var hauteurCarre = 25;
       var ratio = 3;
       var fonctionAuClic = function() {
-        leCalque.clearRect(margeHaut*ratio,margeGauche*ratio,largeurCarre*ratio,hauteurCarre*ratio);
+        leCalque.clearRect(0,0,450,200);
         leCalque.fillStyle = 'rgb(255,0,0)';
         leCarre = leCalque.fillRect(margeHaut,margeGauche, largeurCarre, hauteurCarre);    
         margeHaut += 2 ;
@@ -96,37 +96,34 @@
         clearInterval(fonctionClicInterval)
       }
      
-      var fonctionClicInterval = setInterval(fonctionAuClic,50, )
-      window.setTimeout(StopFonctionClic, 3500);
+      // var fonctionClicInterval = setInterval(fonctionAuClic,50, )
+      // window.setTimeout(StopFonctionClic, 3500);
 
 
       var leParagraphe = window.document.querySelector('p')
-      leParagraphe.addEventListener('click', fonctionAuClic, false)
+      // leParagraphe.addEventListener('click', fonctionAuClic, false)
 
 
-      var leCarre2;
-      var margeHaut2 = 0;
-      var margeGauche2 = 10;
-      var largeurCarre2 = 25;
-      var hauteurCarre2 = 25;
+      var carreFrame = function(){
+        lecalque2 = leCanvas.getContext('2d')
+        lecalque2.clearRect(0,0,450,200);
+        lecalque2.fillStyle = 'rgb(0,255,0)'
+        leCarre2 = lecalque2.fillRect(margeHaut,margeGauche,largeurCarre,hauteurCarre)
+      }
+
+      function creationNouveauCarre(timestamp){
+        margeGauche +=2;
+        margeHaut += 2;
+        carreFrame();
+        requestAnimationFrame(creationNouveauCarre);
+      }
+      leParagraphe.addEventListener('click', creationNouveauCarre, false);
       
-      var fonctionFrame = function() {
-        leCalque.clearRect(margeHaut2,margeGauche2,largeurCarre2,hauteurCarre2);
-        leCalque.fillStyle = 'rgb(0,255,0)';
-        leCarre2 = leCalque.fillRect(margeHaut2,margeGauche2, largeurCarre2, hauteurCarre2);      
-        margeHaut += 2 ;
-        margeGauche += 2;
-
-        return {
-          margeGauche2,
-          margeHaut2,
-        } 
-      };    
+        
 
       
         
       
-      window.requestAnimationFrame(fonctionFrame);
 
       
 

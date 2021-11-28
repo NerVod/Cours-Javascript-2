@@ -43,5 +43,45 @@
         <p><span>3.2</span>. Deuxième paragraphe de la troisième section et un <a href="#">lien</a>.</p>
       </div>
     </div>
+    <script>
+      var divVideo = window.document.createElement('div');
+      divVideo.style.height = '620px';
+      divVideo.style.width = '640px';
+      divVideo.style.margin = 'auto';
+      divVideo.style.border = '1px solid black';
+      
+      var gifChargement = window.document.createElement('img');
+      gifChargement.src = 'chargement.gif';
+      gifChargement.style.margin = 'auto';
+
+      divVideo.appendChild(gifChargement);
+
+
+
+      window.document.body.appendChild(divVideo);
+
+      var ajouterVideo = function() {
+        divVideo.appendChild(laVideo);
+        gifChargement.style.display='none';
+      }
+
+
+      var laVideo = window.document.createElement('video');
+      laVideo.autoplay = true;
+      laVideo.src = 'file_example_MP4_1280_10MG.mp4';
+      
+      laVideo.style.objectFit = 'cover';
+      laVideo.loop = 'loop';
+      laVideo.style.height = '620px';
+      laVideo.style.width= '640px';
+      laVideo.controls= true;
+      laVideo.controls.width= '250';
+      laVideo.addEventListener('load', ajouterVideo(), false )
+
+
+
+
+
+    </script>
   </body>
 </html>

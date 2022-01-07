@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>JavaScript & DOM : Le Modèle Objet du Document - Exercice 22</title>
+    <style>
+      .error {
+        color: red;
+      }
+    </style>
+    <script>
+      //Énoncé :
+
+      /*
+        Créez un formulaire avec un champ de saisie et un bouton submit. L'attribut action du formulaire sera : http://www.google.com, l'attribut method sera : GET.
+      */
+
+      /*
+        1. A la soumission du formulaire (évènement onsubmit spécifique au éléments HTML de type form), afficher dans une boite de dialogue la valeur saisie dans le champ de saisie du formulaire. (l'attribut correspondant à la valeur du champ porte le même nom que la propriété de l'objet correspondant en mémoire).
+      */
+      window.addEventListener("load", function () {
+        var formulaire = document.getElementsByTagName("form")[0];
+        var champSaisie = document.getElementsByName("saisie")[0];
+
+        formulaire.addEventListener("submit", function (evenement) {
+          var saisie = champSaisie.value;
+
+          // Si le champ est vide
+          if (saisie.trim().length === 0) {
+            // Annulation de l'envoi du formulaire
+            evenement.preventDefault();
+
+            // Création d'un paragraphe d'affichage de l'erreur
+            var messageErreur = document.createElement("p");
+            messageErreur.classList.add("error");
+            messageErreur.textContent =
+              "Certains champs n'ont pas été renseignés";
+
+            // Ajout du paragraphe à la suite du formulaire
+            formulaire.parentElement.insertBefore(
+              messageErreur,
+              formulaire.nextSibling
+            );
+          } else {
+            alert(champSaisie.value);
+          }
+        });
+      });
+
+      /*
+        2. A la soumission du formulaire, SI le champ est vide, je crée une élément HTML de type p avec la class erreur et je l'ajoute dans le document en dessous du formulaire et j'empêche le formulaire d'être envoyé par le navigateur Internet.
+      */
+
+      /*
+        Astuce : Si dans un gestionnaire d'évènement (fonction/méthode associée à l'événement), j'exécute la méthode .preventDefault() de l'objet d'évènement, le navigateur Internet ne poursuit pas le comportement par défaut associé à l'événement. Cette méthode est documentée sur le MDN ici : https://developer.mozilla.org/fr/docs/Web/API/Event/preventDefault
+      */
+    </script>
+  </head>
+  <body>
+    <h1>Titre principal</h1>
+    <form action="">
+      <p>
+        <input type="text" name="saisie" />
+      </p>
+      <p>
+        <input type="submit" value="Valider" />
+      </p>
+    </form>
+  </body>
+</html>

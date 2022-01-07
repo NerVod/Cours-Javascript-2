@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>JavaScript & DOM : Le Modèle Objet du Document - Exercice 21</title>
+    <style>
+      #lechat {
+        background-color: #ddd;
+        background-image: url("./chat.png");
+        background-size: cover;
+        height: 200px;
+        position: absolute;
+        width: 200px;
+      }
+    </style>
+    <script>
+      //Énoncé :
+
+      /*Le chat et la souris*/
+
+      /*
+        L'objectif de cet exercice est de créer une div qui suit le pointeur de la souris.
+      */
+
+      /*
+        1. Créez un <div> qui aura pour identifiant lechat. Doter cette <div> de styles CSS de telle sorte qu'elle soit visible par l'utilisateur (avec en fond une photo de petit chat par exemple). Cette <div> doit être positionnée en absolute.
+      */
+
+      /*
+        2. Chercher sur la MDN ici : https://developer.mozilla.org/fr/docs/Web/API/MouseEvent quelles sont les propriétés disponible dans l'objet d'évènement fourni par le navigateur Internet que vous pouvez utiliser pour connaître la position de la souris. Utilisez les notions vues dans l'exercice précédent pour créer un code compatible IE6/7/8/9/10; FF, Chrome, ... qui donne vie au chat.
+      */
+      window.onload = function () {
+        var sourisX;
+        var sourisY;
+        var leChat = document.getElementById("lechat");
+        var chatLargeur = leChat.getBoundingClientRect().width;
+        var chatHauteur = leChat.getBoundingClientRect().height;
+        leChat.style.left = 0;
+        leChat.style.top = 0;
+
+        if (!window.addEventListener) {
+          // IE < 9
+          window.attachEvent("onmousemove", function (evenementMouseMove) {
+            sourisX = evenementMouseMove.clientX;
+            sourisY = evenementMouseMove.clientY;
+          });
+        } else {
+          // IE >= 9, Chrome, Safari, Opera, Firefox
+          window.addEventListener("mousemove", function (evenementMouseMove) {
+            sourisX = evenementMouseMove.clientX;
+            sourisY = evenementMouseMove.clientY;
+          });
+        }
+
+        window.setInterval(function () {
+          if (sourisX !== undefined && sourisY !== undefined) {
+            var chatX = parseFloat(leChat.style.left);
+            var chatY = parseFloat(leChat.style.top);
+            var chatCentreX = parseFloat(leChat.style.left) + chatLargeur / 2;
+            var chatCentreY = parseFloat(leChat.style.top) + chatHauteur / 2;
+            var distanceX = sourisX - chatCentreX;
+            console.log("window.onload -> distanceX", distanceX);
+            var distanceY = sourisY - chatCentreY;
+
+            // Retournement horizontal du chat
+            if (sourisX < chatCentreX) {
+              // Souris à gauche du chat
+              leChat.style.transform = "scaleX(1)";
+            } else {
+              // Souris à droite du chat
+              leChat.style.transform = "scaleX(-1)";
+            }
+
+            leChat.style.left = chatX + distanceX / 100 + "px";
+            leChat.style.top = chatY + distanceY / 100 + "px";
+          }
+        }, 20);
+      };
+    </script>
+  </head>
+  <body>
+    <div id="lechat"></div>
+  </body>
+</html>
